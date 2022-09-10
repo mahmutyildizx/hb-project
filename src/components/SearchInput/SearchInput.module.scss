@@ -1,0 +1,29 @@
+.searchInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .searchIcon {
+    margin-right: 22px;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 20px;
+  }
+  input {
+    background-color: #eeeeee;
+    padding: 0 47px;
+    width: 700px;
+    height: 50px;
+    border-radius: 100px;
+    border: none;
+    color: #b0b0b0;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: #b0b0b0;
+    }
+  }
+}
