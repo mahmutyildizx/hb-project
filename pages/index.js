@@ -1,8 +1,31 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
+import axios from "axios";
 import Header from "../src/sections/Header/Header";
+import { baseUrl } from "../src/constants/constants";
 import style from "../styles/Home.module.scss";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getData = async (url) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(url);
+      setProducts(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    getData(baseUrl);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className={style.homeWrapper}>
       <Head>

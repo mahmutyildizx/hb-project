@@ -15,7 +15,7 @@ function Header() {
       <SearchInput />
 
       <div className={styles.basketContainer}>
-        <Button name="Sepetim" badge={'2'} />
+        <Button name="Sepetim" badge={"2"} />
         {/* <Basket /> */}
       </div>
     </div>

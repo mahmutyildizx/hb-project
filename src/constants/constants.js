@@ -1,0 +1,1 @@
+export const baseUrl = "https://products-mock-api.herokuapp.com/products";
