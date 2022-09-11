@@ -9,10 +9,12 @@ function SortingDropdown() {
   return (
     <div className={styles.sortingContainer}>
       <Select
-        defaultValue={{ label: 'Sıralama', value: 'Sıralama' }}
+        defaultValue={{ label: "Sıralama", value: "Sıralama" }}
         onChange={setSelectedOption}
         options={sortingOptions}
         className={styles.sortingDropdown}
+        id="long-value-select"
+        instanceId="long-value-select"
         styles={{
           control: (provided) => ({
             ...provided,
