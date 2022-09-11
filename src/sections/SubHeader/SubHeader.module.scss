@@ -1,0 +1,30 @@
+.SubHeaderContainer {
+  padding: 10px 80px 25px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .SubHeader {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .PageTitle {
+    color: #484848;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 10px;
+  }
+
+  //   .SearchTextContainer {
+  //     font-size: $medium;
+  //     font-weight: $fw-400;
+  //     line-height: $medium;
+  //     color: $grey-200;
+  //   }
+
+  //   .SearchText {
+  //     color: $black;
+  //   }
+}

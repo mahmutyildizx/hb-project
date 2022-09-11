@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import axios from "axios";
-import Header from "../src/sections/Header/Header";
+import Header from "../src/sections/Header";
+import SubHeader from "../src/sections/SubHeader";
 import { baseUrl } from "../src/constants/constants";
 import style from "../styles/Home.module.scss";
 
@@ -37,6 +38,7 @@ export default function Home() {
       <main>
         <Header />
       </main>
+        <SubHeader />
     </div>
   );
 }
