@@ -19,6 +19,7 @@ function SortingDropdown() {
           control: (provided) => ({
             ...provided,
             width: "120px",
+            cursor: 'pointer',
           }),
           indicatorSeparator: () => ({ display: "none" }),
           valueContainer: (provided) => ({

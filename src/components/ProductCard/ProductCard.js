@@ -1,33 +1,28 @@
 import React from "react";
 import styles from "./ProductCard.module.scss";
-function ProductCard() {
+function ProductCard({ data }) {
   return (
     <div className={styles.productCard}>
       <div className={styles.imageContainer}>
-        <img
-          src="https://productimages.hepsiburada.net/s/49/400-592/10986385899570.jpg"
-          alt="product1"
-        />
+        <img src={data.images[0].image} alt="product" />
       </div>
       <div className={styles.productInfo}>
         <div className={styles.productHeader}>
-          <span>
-            Apple iPhone 11 Pro Maxi Phone 11 Pro Max iPhone 11 (Max 2 Line)...
-          </span>
+          <span>{data.title}</span>
         </div>
         <div className={styles.productBrand}>
           <span>
-            <strong>Marka:</strong> Apple
+            <strong>Marka:</strong> {data.brand}
           </span>
           <span>
-            <strong>Renk:</strong> Siyah
+            <strong>Renk:</strong> {data.color}
           </span>
         </div>
         <div className={styles.productPrice}>
-          <span>90,85 TL</span>
+          <span>{data.price} TL</span>
           <div className={styles.discountRate}>
             <span>124,00 TL</span>
-            <span>12%</span>
+            <span>{data.discountRate}</span>
           </div>
         </div>
       </div>

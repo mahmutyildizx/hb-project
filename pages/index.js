@@ -1,34 +1,13 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import axios from "axios";
 import Header from "../src/sections/Header";
 import SubHeader from "../src/sections/SubHeader";
 import SideBar from "../src/sections/SideBar";
 import ProductList from "../src/sections/ProductList";
-import { baseUrl } from "../src/constants/constants";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const getData = async (url) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    getData(baseUrl);
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   return (
     <div className={styles.homeWrapper}>
       <Head>
@@ -42,7 +21,7 @@ export default function Home() {
       </main>
       <SubHeader />
       <div className={styles.searchProducts}>
-        <SideBar data={products} />
+        <SideBar />
         <ProductList />
       </div>
     </div>

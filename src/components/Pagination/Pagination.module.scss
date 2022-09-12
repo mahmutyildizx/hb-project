@@ -1,0 +1,17 @@
+.paginationContainer {
+    .pagination {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        button {
+            border: 1px solid #eee;
+            border-radius: 9px;
+            padding: 10px;
+            background: #fff;
+            cursor: pointer;
+            &:hover {
+                background: #eee;
+            }
+        }
+    }
+}
