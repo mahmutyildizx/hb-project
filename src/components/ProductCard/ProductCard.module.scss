@@ -14,16 +14,17 @@
       object-fit: contain;
     }
   }
+  .productHeader {
+    font-size: 16px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 18px;
+    color: #484848;
+    margin: 10px 0;
+  }
   .productInfo {
     margin-top: 20px;
-    .productHeader {
-      font-size: 16px;
-      display: inline-block;
-      font-weight: 400;
-      line-height: 18px;
-      color: #484848;
-      margin-bottom: 10px;
-    }
+  
     .productBrand {
       display: flex;
       flex-direction: column;

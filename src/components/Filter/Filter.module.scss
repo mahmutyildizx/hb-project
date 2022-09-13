@@ -1,7 +1,7 @@
 .filterContainer {
   .filterTitle {
     display: block;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
   }
@@ -10,12 +10,13 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
+    margin: 20px 0;
     ul {
       margin: 0;
       padding: 0;
       .filterItem {
         margin-bottom: 10px;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 400;
         color: #646464;
         cursor: pointer;

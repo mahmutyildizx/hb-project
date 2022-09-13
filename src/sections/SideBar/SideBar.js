@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Filter from "../../components/Filter";
-import { useSelector, useDispatch } from "react-redux";
+import SideBarSort from "../../components/SideBarSort/SideBarSort";
+import { sortingOptions } from "../../constants/constants";
+import { useSelector } from "react-redux";
 import styles from "./SideBar.module.scss";
 
 function SideBar() {
@@ -42,6 +44,7 @@ function SideBar() {
   return (
     <div className={styles.sideBarContainer}>
       <Filter data={colorOptions} title="Renk" />
+      <SideBarSort />
       <Filter data={brandOptions} title="Marka" />
     </div>
   );

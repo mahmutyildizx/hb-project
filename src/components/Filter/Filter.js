@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { productFilter } from "../../features/productsSlice";
 import styles from "./Filter.module.scss";
 
-function Filter({ title, data, products }) {
+function Filter({ title, data }) {
   const dispatch = useDispatch();
   return (
     <div className={styles.filterContainer}>

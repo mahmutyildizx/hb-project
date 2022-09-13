@@ -6,7 +6,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    button {
+    .paginationItem {
       border: 1px solid #eee;
       border-radius: 9px;
       padding: 10px;
@@ -14,6 +14,16 @@
       cursor: pointer;
       &:hover {
         background: #eee;
+      }
+      .disabled {
+        opacity: 0.5;
+      }
+    }
+    .pageItem {
+      margin: 0 3px;
+      .active {
+        border: 1px solid #ff6000;
+        scroll-behavior: auto;
       }
     }
   }

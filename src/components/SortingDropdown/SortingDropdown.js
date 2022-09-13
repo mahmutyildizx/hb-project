@@ -1,35 +1,30 @@
-import React, { useState } from "react";
-import Select from "react-select";
+import React from "react";
 import { sortingOptions } from "../../constants/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { handleSort } from "../../features/productsSlice";
 import styles from "./SortingDropdown.module.scss";
 
-function SortingDropdown() {
-  const [selectedOption, setSelectedOption] = useState();
-
+function Sort() {
+  const sort = useSelector((state) => state.products.sort);
+  const dispatch = useDispatch();
   return (
     <div className={styles.sortingContainer}>
-      <Select
-        defaultValue={{ label: "Sıralama", value: "Sıralama" }}
-        onChange={setSelectedOption}
-        options={sortingOptions}
-        className={styles.sortingDropdown}
-        id="long-value-select"
-        instanceId="long-value-select"
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            width: "120px",
-            cursor: 'pointer',
-          }),
-          indicatorSeparator: () => ({ display: "none" }),
-          valueContainer: (provided) => ({
-            ...provided,
-            padding: "14px",
-          }),
-        }}
-      />
+      <select onChange={(e) => dispatch(handleSort(e.target.value))}>
+        <option value="">Sıralama</option>
+        {sortingOptions.map((item) => {
+          return (
+            <option
+              key={item.value}
+              value={item.value}
+              selected={sort === item.value}
+            >
+              {item.label}
+            </option>
+          );
+        })}
+      </select>
     </div>
   );
 }
 
-export default SortingDropdown;
+export default Sort;

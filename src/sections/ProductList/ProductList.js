@@ -5,21 +5,35 @@ import { getProductsAsync } from "../../features/productsSlice";
 import Pagination from "../../components/Pagination";
 import styles from "./ProductList.module.scss";
 function ProductList() {
-  const { products, allProducts } = useSelector((state) => state.products);
+  const { products, allProducts, page, searchTerm } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProductsAsync("products"));
+    dispatch(getProductsAsync());
   }, [dispatch]);
-  const productsData = products.length > 0 ? products : allProducts;
+  const productsData =
+    products.length > 0 || searchTerm ? products : allProducts;
+  const productPerPage = 12;
+  const totalProducts = productsData.length;
+
+  const indexOfLastPage = page * productPerPage;
+  const indexOfFirstPage = indexOfLastPage - productPerPage;
+  const filterProducts = productsData.slice(indexOfFirstPage, indexOfLastPage);
+
   return (
-    <>
+    <div>
       <div className={styles.productListContainer}>
-        {productsData.map((item) => {
+        {filterProducts.map((item) => {
           return <ProductCard key={item.id} data={item} />;
         })}
       </div>
-      <Pagination />
-    </>
+      <Pagination
+        currentPage={page}
+        totalProducts={totalProducts}
+        productPerPage={productPerPage}
+      />
+    </div>
   );
 }
 

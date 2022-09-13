@@ -7,6 +7,7 @@ import ProductList from "../src/sections/ProductList";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
+
   return (
     <div className={styles.homeWrapper}>
       <Head>

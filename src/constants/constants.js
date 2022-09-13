@@ -2,19 +2,19 @@ export const baseUrl = "https://products-mock-api.herokuapp.com/products";
 
 export const sortingOptions = [
   {
-    value: "cheapestPrice",
+    value: "lowest",
     label: "En Düşük Fiyat",
   },
   {
-    value: "highestPrice",
+    value: "highest",
     label: "En Yüksek Fiyat",
   },
   {
-    value: "newestAsc",
+    value: "newest",
     label: "En Yeniler (A>Z)",
   },
   {
-    value: "newestDesc",
+    value: "oldest",
     label: "En Yeniler (Z>A)",
   },
 ];

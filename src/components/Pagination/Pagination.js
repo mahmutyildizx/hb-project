@@ -1,45 +1,57 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { handlePagination } from "../../features/productsSlice";
+import cn from "classnames";
 import styles from "./Pagination.module.scss";
 
-function Pagination() {
-  //   const totalPages = Math.ceil(totalPosts / postPerPage);
+function Pagination({ currentPage, totalProducts, productPerPage }) {
+  const totalNumberOfPages = Math.ceil(totalProducts / productPerPage);
+  const dispatch = useDispatch();
+  const paginateProducts = [];
 
-  //   let pages = [];
-
-  //   for (let p = 1; p <= totalPages; p++) {
-  //     pages.push(p);
-  //   }
+  for (let i = 1; i <= totalNumberOfPages; i++) {
+    paginateProducts.push(i);
+  }
 
   return (
     <div className={styles.paginationContainer}>
       <ul className={styles.pagination}>
         <li>
           <button
-            className={styles.paginationLink}
-            // onClick={() => setCurrentPage(currentPage - 1)}
+            className={cn(styles.paginationItem, {
+              [styles.disabled]: currentPage === 1,
+            })}
+            onClick={() => dispatch(handlePagination(currentPage - 1))}
+            disabled={currentPage === 1}
           >
             &laquo;
           </button>
         </li>
-        {/* {pages.map((page) => (
+        {paginateProducts.map((item) => (
           <li
-            key={page}
-            className={`page-item ${page === currentPage && `active`}`}
-            onClick={() => setCurrentPage(page)}
+            key={item}
+            className={cn(styles.pageItem, {
+              [styles.active]: currentPage === item,
+            })}
+            onClick={() => dispatch(handlePagination(item))}
           >
-            <button className={styles.pageLink}>{page}</button>
+            <button
+              className={cn(styles.paginationItem, {
+                [styles.active]: currentPage === item,
+              })}
+            >
+              {item}
+            </button>
           </li>
-        ))} */}
+        ))}
 
         <li>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-        </li>
-        <li>
           <button
-            className={styles.pageLink}
-            // onClick={() => setCurrentPage(currentPage + 1)}
+            className={cn(styles.paginationItem, {
+              [styles.disabled]: currentPage === totalNumberOfPages,
+            })}
+            onClick={() => dispatch(handlePagination(currentPage + 1))}
+            disabled={currentPage === totalNumberOfPages}
           >
             &raquo;
           </button>
