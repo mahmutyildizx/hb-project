@@ -40,11 +40,9 @@ function SideBar() {
   });
 
   return (
-    <div className={styles.SideBarContainer}>
-      <div className={styles.SideBar}>
-        <Filter data={colorOptions} title="Renk" />
-        <Filter data={brandOptions} title="Marka" />
-      </div>
+    <div className={styles.sideBarContainer}>
+      <Filter data={colorOptions} title="Renk" />
+      <Filter data={brandOptions} title="Marka" />
     </div>
   );
 }

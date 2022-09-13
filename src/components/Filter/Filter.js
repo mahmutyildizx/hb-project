@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { productFilter } from "../../features/productsSlice";
 import styles from "./Filter.module.scss";
 
-function Filter({ title, data }) {
+function Filter({ title, data, products }) {
   const dispatch = useDispatch();
   return (
     <div className={styles.filterContainer}>
@@ -16,7 +16,7 @@ function Filter({ title, data }) {
                 onClick={() => {
                   dispatch(
                     productFilter({
-                      key: "color",
+                      key: title === "Renk" ? "color" : "brand",
                       value: item.name,
                     })
                   );

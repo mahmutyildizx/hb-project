@@ -7,7 +7,6 @@ import ProductList from "../src/sections/ProductList";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-
   return (
     <div className={styles.homeWrapper}>
       <Head>
@@ -16,11 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Header />
-      </main>
+      <Header />
       <SubHeader />
-      <div className={styles.searchProducts}>
+      <div className={styles.productList}>
         <SideBar />
         <ProductList />
       </div>

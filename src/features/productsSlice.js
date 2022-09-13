@@ -16,12 +16,16 @@ const productsSlice = createSlice({
       state.allProducts = action.payload;
     },
     productFilter: (state, action) => {
-      state.products = [
-        ...state.products,
-        ...state.allProducts.filter((item) => {
-          return item[action.payload.key] === action.payload.value;
-        }),
-      ];
+      const { key, value } = action.payload;
+      // state.products = [
+      //   ...state.products,
+      //   ...state.allProducts.filter((item) => {
+      //     return item[key] === value;
+      //   })
+      // ];
+      state.products = state.allProducts.filter((item) => {
+        return item[key] === value;
+      });
     },
     // sortProductsAsc: (state, action) => {
     //   state.data = action.payload.sort((a, b) =>

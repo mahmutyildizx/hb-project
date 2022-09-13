@@ -1,9 +1,12 @@
 .homeWrapper {
   padding: 0 25px;
   @media (min-width: 768px) {
-    padding: 0 176px;
+    padding: 0 80px;
+    margin: 0 auto;
+    max-width: 1440px;
   }
-  .searchProducts {
+  .productList {
     display: flex;
+    position: relative;
   }
 }

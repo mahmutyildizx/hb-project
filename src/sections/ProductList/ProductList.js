@@ -11,7 +11,6 @@ function ProductList() {
     dispatch(getProductsAsync("products"));
   }, [dispatch]);
   const productsData = products.length > 0 ? products : allProducts;
-  console.log("products", productsData);
   return (
     <>
       <div className={styles.productListContainer}>
