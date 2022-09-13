@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import useDebounce from "../../hooks/use-debounce";
 import { handleSearch } from "../../features/productsSlice";
 import styles from "./SearchInput.module.scss";
 
 function SearchInput() {
-  const [search, setSearch] = React.useState("");
-
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-    dispatch(handleSearch(e.target.value));
-  };
+
+  const debouncedSearchTerm = useDebounce(searchTerm.trim(), 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm.length >= 2) {
+      setSearchTerm(debouncedSearchTerm);
+      dispatch(handleSearch(debouncedSearchTerm));
+    }
+  }, [debouncedSearchTerm, dispatch]);
+
 
   return (
     <div className={styles.searchInput}>
@@ -18,8 +24,8 @@ function SearchInput() {
       <input
         type="text"
         placeholder="25 milyon’dan fazla ürün içerisinde ara"
-        value={search}
-        onChange={handleChange}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
     </div>
   );

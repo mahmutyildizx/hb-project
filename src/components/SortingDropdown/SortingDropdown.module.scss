@@ -1,14 +1,15 @@
 .sortingContainer {
   margin-bottom: 20px;
+  display: flex;
   .sortingDropdown {
-    background-color: #ffffff;
-    color: #b0b0b0;
+    width: 120px;
+    height: 55px;
+    text-align: center;
     border: 1px solid #b0b0b0;
     border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-    position: relative;
+    outline: none;
     cursor: pointer;
-    border: none;
+    margin: 0 auto;
+    
   }
 }

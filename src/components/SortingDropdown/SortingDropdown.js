@@ -9,14 +9,14 @@ function Sort() {
   const dispatch = useDispatch();
   return (
     <div className={styles.sortingContainer}>
-      <select onChange={(e) => dispatch(handleSort(e.target.value))}>
+      <select onChange={(e) => dispatch(handleSort(e.target.value))} className={styles.sortingDropdown}>
         <option value="">Sıralama</option>
         {sortingOptions.map((item) => {
           return (
             <option
               key={item.value}
               value={item.value}
-              selected={sort === item.value}
+              defaultValue={sort === item.value}
             >
               {item.label}
             </option>

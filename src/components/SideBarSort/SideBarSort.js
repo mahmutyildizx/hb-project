@@ -8,7 +8,7 @@ function SideBarSort() {
   const dispatch = useDispatch();
   return (
     <div className={styles.sideBarSortContainer}>
-      <div className={styles.sideBarSort}>
+      <div className={styles.sideBarSortList}>
         <span className={styles.sideBarSortTitle}>Sıralama</span>
         <ul>
           {sortingOptions.map((item, index) => {
