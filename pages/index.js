@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "../src/sections/Header";
 import SubHeader from "../src/sections/SubHeader";
 import SideBar from "../src/sections/SideBar";
 import ProductList from "../src/sections/ProductList";
+// import Modal from "../src/components/Modal";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
@@ -22,6 +22,7 @@ export default function Home() {
         <SideBar />
         <ProductList />
       </div>
+      {/* <Modal /> */}
     </div>
   );
 }

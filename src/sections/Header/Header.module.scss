@@ -24,15 +24,14 @@
       bottom: -53px;
       right: 240px;
 
-      cursor: pointer;
-      display: none;
+      display: block;
       z-index: 500;
     }
 
-    &:hover {
-      .cart {
-        display: block;
-      }
-    }
+    // &:hover {
+    //   .cart {
+    //     display: block;
+    //   }
+    // }
   }
 }

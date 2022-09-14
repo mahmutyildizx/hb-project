@@ -30,6 +30,9 @@ function ProductCard({ data }) {
           </div>
         </div>
       </div>
+      <div className={styles.productCartButton}>
+        <span>Sepete Ekle</span>
+      </div>
     </div>
   );
 }

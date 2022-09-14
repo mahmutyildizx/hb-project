@@ -12,12 +12,6 @@
   position: relative;
   cursor: pointer;
 
-  &.buttonIcon {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .quantityBadge {
     position: absolute;
     z-index: 2;
