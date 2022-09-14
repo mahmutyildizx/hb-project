@@ -17,7 +17,7 @@ function SideBarSort() {
                 onClick={() => {
                   dispatch(handleSort(item.value));
                 }}
-                key={index}
+                key={item.value}
                 className={styles.sideBarSortingItem}
               >
                 {item.label}

@@ -1,19 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+
+import { handleSearch } from "../features/productsSlice";
+
+import { useDispatch } from "react-redux";
 
 const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
+    const debounce = setTimeout(() => {
+      if (value.length > 2) {
+        dispatch(handleSearch(value));
+      }
+      if (value.length === 0) {
+        dispatch(handleSearch(""));
+      }
     }, delay);
 
     return () => {
-      clearTimeout(handler);
+      clearTimeout(debounce);
     };
-  }, [value, delay]);
-
-  return debouncedValue;
+  }, [value, dispatch, delay]);
 };
 
 export default useDebounce;

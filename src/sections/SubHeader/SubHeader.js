@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SortingDropdown from "../../components/SortingDropdown";
 import styles from "./SubHeader.module.scss";
@@ -15,7 +16,7 @@ function SubHeader() {
         <span
           className={styles.SearchTextContainer}
         >
-          <span>{`Aranan Kelime: ${searchTerm && searchTerm}`}</span>
+          <span>{`Aranan Kelime: ${searchTerm}`}</span>
         </span>
       </div>
       <div>

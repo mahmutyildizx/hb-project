@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Button from "../../components/Button";
 import Basket from "../../components/Basket";
+import Cart from "../../components/Cart";
 import SearchInput from "../../components/SearchInput";
 import styles from "./Header.module.scss";
 
 function Header() {
+  //totalQuantity={totalQuantity} handleClickBasket={handleClickBasket}
   return (
     <div className={styles.headerContainer}>
       <div className={styles.logoWrapper}>
@@ -16,8 +17,10 @@ function Header() {
       <SearchInput />
 
       <div className={styles.basketContainer}>
-        <Button name="Sepetim" badge={"2"} />
-        {/* <Basket /> */}
+        <Basket />
+        <div className={styles.cart}>
+          <Cart />
+        </div>
       </div>
     </div>
   );
