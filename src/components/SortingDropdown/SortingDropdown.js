@@ -13,7 +13,9 @@ function Sort() {
         onChange={(e) => dispatch(handleSort(e.target.value))}
         className={styles.sortingDropdown}
       >
-        <option value="">Sıralama</option>
+        <option value="" hidden>
+          Sıralama
+        </option>
         {sortingOptions.map((item) => {
           return (
             <option

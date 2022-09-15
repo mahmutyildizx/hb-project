@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productFilter } from "../../features/productsSlice";
 import styles from "./Filter.module.scss";
 
 function Filter({ title, data }) {
+  const activeFilter = useSelector((state) => state.products.activeFilter);
   const dispatch = useDispatch();
   return (
     <div className={styles.filterContainer}>
@@ -24,7 +25,11 @@ function Filter({ title, data }) {
                 key={index}
                 className={styles.filterItem}
               >
-                {`${item.name} (${item.count})`}
+                <span
+                  className={activeFilter === item.name ? styles.activeFilter : ""}
+                >
+                  {`${item.name} (${item.count})`}
+                </span>
               </li>
             );
           })}

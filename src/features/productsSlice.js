@@ -9,6 +9,7 @@ const initialState = {
   cart: [],
   sort: "",
   searchTerm: "",
+  activeFilter: "",
   page: 1,
 };
 
@@ -30,6 +31,9 @@ const productsSlice = createSlice({
     productFilter: (state, action) => {
       const { key, value } = action.payload;
       state.products = state.allProducts.filter((item) => {
+        if (item[key] === value) {
+          state.activeFilter = value;
+        }
         return item[key] === value;
       });
       state.page = 1;
