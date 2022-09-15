@@ -6,12 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
+    "@testing-library/jest-dom": "^5.16.5",
     "axios": "^0.27.2",
+    "babel-jest": "^29.0.3",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
     "classnames": "^2.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.0.3",
+    "jest-next-dynamic": "^1.0.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
