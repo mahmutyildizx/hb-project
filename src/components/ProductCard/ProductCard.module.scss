@@ -15,28 +15,36 @@
     }
 
     .productCartButton {
-      background-color: #feeee2;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      padding: 10px 50px;
-      width: 235px;
       display: block;
-      margin: 0 auto;
-      position: absolute;
-      bottom: 20px;
-      left: 10px;
-      cursor: pointer;
       span {
-        color: #ff6000;
         font-size: 16px;
         text-align: center;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding: 10px 50px;
+        width: 235px;
         display: block;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        user-select: none;
+      }
+      .addCart {
+        background-color: #feeee2;
+        color: #ff6000;
+        cursor: pointer;
+      }
+      .inCart {
+        background-color: #f1f1f1;
+        color: #b0b0b0;
+        padding: 12px 13px;
+        cursor: default;
       }
     }
   }
   .productCartButton {
     display: none;
-    
   }
 
   .imageContainer {

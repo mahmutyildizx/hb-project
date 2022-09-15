@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/productsSlice";
 import { formatPrice } from "../../helpers/index";
 import styles from "./ProductCard.module.scss";
-function ProductCard({ data }) {
+function ProductCard({ data, isInCart }) {
   const dispatch = useDispatch();
   const originalPrice = Math.floor(
     data.price + (data.price * data.discountRate) / 100
@@ -34,7 +34,13 @@ function ProductCard({ data }) {
         </div>
       </div>
       <div className={styles.productCartButton}>
-        <span onClick={()=>dispatch(addToCart(data.id))}>Sepete Ekle</span>
+        {isInCart ? (
+          <span className={styles.inCart} disabled>Bu ürünü sepete ekleyemezsiniz</span>
+        ) : (
+          <span className={styles.addCart} onClick={() => dispatch(addToCart({ id: data.id }))}>
+            Sepete Ekle
+          </span>
+        )}
       </div>
     </div>
   );

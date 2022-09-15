@@ -1,15 +1,15 @@
-.SubHeaderContainer {
+.subHeaderContainer {
   padding: 10px 40px 25px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  .SubHeader {
+  .subHeader {
     display: flex;
     flex-direction: column;
   }
 
-  .PageTitle {
+  .pageTitle {
     color: #484848;
     font-size: 28px;
     font-weight: 700;
@@ -17,14 +17,11 @@
     margin-bottom: 10px;
   }
 
-  //   .SearchTextContainer {
-  //     font-size: $medium;
-  //     font-weight: $fw-400;
-  //     line-height: $medium;
-  //     color: $grey-200;
-  //   }
+    .searchTextContainer {
+      height: 20px;
+    }
 
-  //   .SearchText {
-  //     color: $black;
-  //   }
+    .searchText {
+      color: black;
+    }
 }

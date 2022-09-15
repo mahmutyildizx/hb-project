@@ -1,7 +1,14 @@
 import React from "react";
-import styles from "./Modal.module.scss";
 
-const Modal = ({ title, text }) => {
+import { useDispatch } from "react-redux";
+import { useModal } from "../../hooks/use-modal";
+import styles from "./Modal.module.scss";
+import { removeItemFromCart } from "../../features/productsSlice";
+
+const Modal = () => {
+  const { isOpen, closeModal, modalData } = useModal();
+  const dispatch = useDispatch();
+  if (!isOpen) return null;
   return (
     <>
       <div>
@@ -10,12 +17,26 @@ const Modal = ({ title, text }) => {
             <p>Ürünü silmek istediğinize emin misiniz?</p>
           </div>
           <div className={styles.modalBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At ipsum
+            totam, similique cupiditate, vitae incidunt illum non et quod
+            repudiandae inventore. Dolor qui autem veritatis nihil inventore
+            soluta, beatae minus.
           </div>
           <div className={styles.modalFooter}>
             <div className={styles.modalFooterButtons}>
-              <span onClick={() => console.log("click")}>EVET</span>
-              <span onClick={() => console.log("click")}>HAYIR</span>
+              <span
+                onClick={() => {
+                  dispatch(
+                    removeItemFromCart({
+                      id: modalData,
+                    })
+                  );
+                  closeModal();
+                }}
+              >
+                EVET
+              </span>
+              <span onClick={() => closeModal()}>HAYIR</span>
             </div>
           </div>
         </div>

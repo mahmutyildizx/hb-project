@@ -4,11 +4,16 @@ import { baseUrl } from "../constants/constants";
 
 const initialState = {
   allProducts: [],
+  isProductsLoading: false,
   products: [],
   cart: [],
   sort: "",
   searchTerm: "",
   page: 1,
+};
+
+const setLocalStorageCart = (cart) => {
+  window.localStorage.setItem("cartProducts", JSON.stringify(cart));
 };
 
 const productsSlice = createSlice({
@@ -17,6 +22,10 @@ const productsSlice = createSlice({
   reducers: {
     getProducts: (state, action) => {
       state.allProducts = action.payload;
+      state.isProductsLoading = false;
+    },
+    setProductsLoading: (state) => {
+      state.isProductsLoading = true;
     },
     productFilter: (state, action) => {
       const { key, value } = action.payload;
@@ -52,7 +61,7 @@ const productsSlice = createSlice({
     handleSearch: (state, action) => {
       state.searchTerm = action.payload;
       state.page = 1;
-      if (action.payload === "" ) {
+      if (action.payload === "") {
         state.products = state.allProducts;
         state.searchTerm = "";
       }
@@ -63,53 +72,44 @@ const productsSlice = createSlice({
       });
     },
     addToCart: (state, action) => {
-      const itemInCart = state.cart.find(
-        (item) => item.id === action.payload.id
-      );
-      if (itemInCart) {
-        itemInCart.quantity++;
-      } else {
-        state.cart.push({ ...action.payload, quantity: 1 });
+      const itemInCart = state.cart.find((item) => item === action.payload.id);
+      if (!itemInCart) {
+        state.cart.push({ id: action.payload.id, date: new Date() });
+        setLocalStorageCart(state.cart);
       }
     },
-    incrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
-      item.quantity++;
-    },
-    decrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
-      if (item.quantity === 1) {
-        item.quantity = 1;
-      } else {
-        item.quantity--;
-      }
-    },
-    removeItem: (state, action) => {
+    removeItemFromCart: (state, action) => {
       const removeItem = state.cart.filter(
-        (item) => item.id !== action.payload
+        (item) => item.id !== action.payload.id
       );
       state.cart = removeItem;
+      setLocalStorageCart(state.cart);
+    },
+    setInitialCart: (state, action) => {
+      state.cart = action.payload;
     },
   },
 });
 
 export const getProductsAsync = () => async (dispatch) => {
   try {
+    dispatch(setProductsLoading());
     const response = await axios.get(baseUrl);
     dispatch(getProducts(response.data));
   } catch (err) {
     throw new Error(err);
   }
 };
+
 export default productsSlice.reducer;
 export const {
   getProducts,
+  setProductsLoading,
   productFilter,
-  handleSort,
   handlePagination,
+  handleSort,
   handleSearch,
   addToCart,
-  incrementQuantity,
-  decrementQuantity,
-  removeItem,
+  removeItemFromCart,
+  setInitialCart,
 } = productsSlice.actions;

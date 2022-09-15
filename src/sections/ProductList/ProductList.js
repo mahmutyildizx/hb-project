@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { useSelector, useDispatch } from "react-redux";
-import { getProductsAsync } from "../../features/productsSlice";
+import { useSelector } from "react-redux";
 import Pagination from "../../components/Pagination";
 import styles from "./ProductList.module.scss";
+
 function ProductList() {
-  const { products, allProducts, page, searchTerm } = useSelector(
+  const { products, allProducts, page, searchTerm, cart } = useSelector(
     (state) => state.products
   );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductsAsync());
-  }, [dispatch]);
   const productsData =
     products.length > 0 || searchTerm ? products : allProducts;
   const productPerPage = 12;
@@ -21,11 +17,21 @@ function ProductList() {
   const indexOfFirstPage = indexOfLastPage - productPerPage;
   const filterProducts = productsData.slice(indexOfFirstPage, indexOfLastPage);
 
+  if (!filterProducts.length) {
+    return <div style={{fontSize: '22px'}}>Herhangi bir sonuç bulunamadı</div>;
+  }
+  
   return (
     <div>
       <div className={styles.productListContainer}>
         {filterProducts.map((item) => {
-          return <ProductCard key={item.id} data={item} />;
+          return (
+            <ProductCard
+              key={item.id}
+              data={item}
+              isInCart={cart.find((cartItem) => cartItem.id === item.id)}
+            />
+          );
         })}
       </div>
       <Pagination

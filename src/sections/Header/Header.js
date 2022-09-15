@@ -7,15 +7,11 @@ import SearchInput from "../../components/SearchInput";
 import styles from "./Header.module.scss";
 
 function Header() {
-  const cart = useSelector((state) => state.cart);
-
-  const getTotalQuantity = () => {
-    let total = 0;
-    cart?.forEach((item) => {
-      total += item.quantity;
-    });
-    return total;
-  };
+  const cart = useSelector((state) => state.products.cart);
+  const products = useSelector((state) => state.products.allProducts);
+  const cartProducts = products
+    .filter((item) => cart.find((cartItem) => cartItem.id === item.id))
+    .reverse();
   return (
     <div className={styles.headerContainer}>
       <div className={styles.logoWrapper}>
@@ -23,12 +19,13 @@ function Header() {
           <img src="/Logo.svg" alt="logo" />
         </Link>
       </div>
+
       <SearchInput />
 
       <div className={styles.basketContainer}>
-        <Basket totalQuantity={getTotalQuantity} />
+        <Basket totalQuantity={cart?.length} />
         <div className={styles.cart}>
-          <Cart />
+          <Cart cartProducts={cartProducts} />
         </div>
       </div>
     </div>

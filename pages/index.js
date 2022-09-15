@@ -1,13 +1,30 @@
+import { useEffect } from "react";
 import Head from "next/head";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getProductsAsync,
+  setInitialCart,
+} from "../src/features/productsSlice";
 import Header from "../src/sections/Header";
 import SubHeader from "../src/sections/SubHeader";
 import SideBar from "../src/sections/SideBar";
+import Modal from "../src/components/Modal";
 import ProductList from "../src/sections/ProductList";
-// import Modal from "../src/components/Modal";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-
+  const isProductsLoading = useSelector(
+    (state) => state.products.isProductsLoading
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductsAsync());
+    if (window.localStorage.getItem("cartProducts")) {
+      dispatch(
+        setInitialCart(JSON.parse(window.localStorage.getItem("cartProducts")))
+      );
+    }
+  }, [dispatch]);
   return (
     <div className={styles.homeWrapper}>
       <Head>
@@ -18,11 +35,18 @@ export default function Home() {
 
       <Header />
       <SubHeader />
-      <div className={styles.productList}>
-        <SideBar />
-        <ProductList />
-      </div>
-      {/* <Modal /> */}
+      {isProductsLoading ? (
+        <div className={styles.loadingWrapper}>
+          <span />
+        </div>
+      ) : (
+        <div className={styles.pageWrapper}>
+          <SideBar />
+          <ProductList />
+        </div>
+      )}
+
+      <Modal />
     </div>
   );
 }
