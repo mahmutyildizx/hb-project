@@ -7,7 +7,7 @@ function SearchInput() {
   const { searchTerm } = useSelector((state) => state.products);
   const [searchTermInput, setSearchTermInput] = useState(searchTerm);
   
-  const debouncedSearchTerm = useDebounce(searchTermInput.trim(), 500);
+  const debouncedSearchTerm = useDebounce(searchTermInput.trim(), 300);
 
   const handleOnChange = (e) => {
     setSearchTermInput(e.target.value);

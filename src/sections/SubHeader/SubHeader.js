@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SortingDropdown from "../../components/SortingDropdown";
 import styles from "./SubHeader.module.scss";

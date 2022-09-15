@@ -2,6 +2,20 @@ import React from "react";
 import styles from "./Cart.module.scss";
 
 function Cart() {
+  
+  // if (!cartProducts?.length) {
+  //   return (
+  //     <div className={styles.cartContainer}>
+  //       <div role="button" className={styles.emptyCart}>
+  //         <h3>Sepetin şu an boş</h3>
+  //         <p>
+  //           Sepetini Hepsiburada’nın fırsatlarla dolu dünyasından doldurmak için
+  //           aşağıdaki ürünleri incelemeye başlayabilirsin.
+  //         </p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
     <div className={styles.cartContainer}>
       <div className={styles.itemContainer}>

@@ -9,7 +9,7 @@ const useDebounce = (value, delay) => {
 
   useEffect(() => {
     const debounce = setTimeout(() => {
-      if (value.length > 2) {
+      if (value.length >= 2) {
         dispatch(handleSearch(value));
       }
       if (value.length === 0) {

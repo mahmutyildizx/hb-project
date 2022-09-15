@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Basket.module.scss";
 
-function Basket({ handleClickBasket, totalQuantity }) {
+function Basket({ totalQuantity }) {
   return (
-    <div className={styles.basketContainer} onClick={handleClickBasket}>
-      <span className={styles.count}>{2}</span>
+    <div className={styles.basketContainer}>
+      <span className={styles.count}>{totalQuantity() || 0}</span>
       <p>Sepetim</p>
     </div>
   );

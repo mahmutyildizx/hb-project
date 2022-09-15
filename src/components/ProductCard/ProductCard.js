@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/productsSlice";
 import { formatPrice } from "../../helpers/index";
 import styles from "./ProductCard.module.scss";
 function ProductCard({ data }) {
+  const dispatch = useDispatch();
   const originalPrice = Math.floor(
     data.price + (data.price * data.discountRate) / 100
   );
@@ -31,7 +34,7 @@ function ProductCard({ data }) {
         </div>
       </div>
       <div className={styles.productCartButton}>
-        <span>Sepete Ekle</span>
+        <span onClick={()=>dispatch(addToCart(data.id))}>Sepete Ekle</span>
       </div>
     </div>
   );

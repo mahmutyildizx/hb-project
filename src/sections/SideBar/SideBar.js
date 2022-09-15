@@ -1,7 +1,6 @@
 import React from "react";
 import Filter from "../../components/Filter";
 import SideBarSort from "../../components/SideBarSort/SideBarSort";
-import { sortingOptions } from "../../constants/constants";
 import { useSelector } from "react-redux";
 import styles from "./SideBar.module.scss";
 
