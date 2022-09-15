@@ -6,7 +6,6 @@ import styles from "./SideBarSort.module.scss";
 
 function SideBarSort() {
   const sort = useSelector((state) => state.products.sort);
-  console.log(sort);
   const dispatch = useDispatch();
   return (
     <div className={styles.sideBarSortContainer}>

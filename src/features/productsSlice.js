@@ -30,12 +30,26 @@ const productsSlice = createSlice({
     },
     productFilter: (state, action) => {
       const { key, value } = action.payload;
-      state.products = state.allProducts.filter((item) => {
-        if (item[key] === value) {
-          state.activeFilter = value;
-        }
-        return item[key] === value;
-      });
+      state.products = state.allProducts
+        .filter((item) => {
+          if (item[key] === value) {
+            state.activeFilter = value;
+          }
+          return item[key] === value;
+        })
+        .sort((a, b) => {
+          if (state.sort === "lowest") {
+            return a.price - b.price;
+          } else if (state.sort === "highest") {
+            return b.price - a.price;
+          } else if (state.sort === "newest") {
+            return new Date(b.createdDate) - new Date(a.createdDate);
+          } else if (state.sort === "oldest") {
+            return new Date(a.createdDate) - new Date(b.createdDate);
+          } else {
+            return state.products;
+          }
+        });
       state.page = 1;
       state.searchTerm = "";
     },
@@ -46,9 +60,8 @@ const productsSlice = createSlice({
       state.sort = action.payload;
       state.page = 1;
       state.searchTerm = "";
-      const products =
-        state.products.length > 0 ? state.products : state.allProducts;
-      state.products = [...products].sort((a, b) => {
+      // const products = state.products.length > 0 ? state.products : state.allProducts;
+      state.products = [...state.products].sort((a, b) => {
         if (state.sort === "lowest") {
           return a.price - b.price;
         } else if (state.sort === "highest") {
@@ -78,7 +91,7 @@ const productsSlice = createSlice({
     addToCart: (state, action) => {
       const itemInCart = state.cart.find((item) => item === action.payload.id);
       if (!itemInCart) {
-        state.cart.push({ id: action.payload.id, date: new Date() });
+        state.cart.push({ id: action.payload.id });
         setLocalStorageCart(state.cart);
       }
     },
@@ -91,6 +104,12 @@ const productsSlice = createSlice({
     },
     setInitialCart: (state, action) => {
       state.cart = action.payload;
+    },
+    handleClear: (state) => {
+      state.sort = "";
+      state.searchTerm = "";
+      state.activeFilter = "";
+      state.page = 1;
     },
   },
 });
@@ -116,4 +135,5 @@ export const {
   addToCart,
   removeItemFromCart,
   setInitialCart,
+  handleClear,
 } = productsSlice.actions;

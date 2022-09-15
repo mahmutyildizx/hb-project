@@ -13,6 +13,21 @@ function Pagination({ currentPage, totalProducts, productPerPage }) {
     paginateProducts.push(i);
   }
 
+  const handlePreviousPage = () => {
+    dispatch(handlePagination(currentPage - 1));
+    window.scrollTo(0, 0);
+  };
+
+  const handleNextPage = () => {
+    dispatch(handlePagination(currentPage + 1));
+    window.scrollTo(0, 0);
+  };
+
+  const handleSpecificPage = (item) => {
+    dispatch(handlePagination(item));
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className={styles.paginationContainer}>
       <ul className={styles.pagination}>
@@ -21,7 +36,7 @@ function Pagination({ currentPage, totalProducts, productPerPage }) {
             className={cn(styles.paginationItem, {
               [styles.disabled]: currentPage === 1,
             })}
-            onClick={() => dispatch(handlePagination(currentPage - 1))}
+            onClick={handlePreviousPage}
             disabled={currentPage === 1}
           >
             &laquo;
@@ -33,7 +48,7 @@ function Pagination({ currentPage, totalProducts, productPerPage }) {
             className={cn(styles.pageItem, {
               [styles.active]: currentPage === item,
             })}
-            onClick={() => dispatch(handlePagination(item))}
+            onClick={() => handleSpecificPage(item)}
           >
             <button
               className={cn(styles.paginationItem, {
@@ -50,7 +65,7 @@ function Pagination({ currentPage, totalProducts, productPerPage }) {
             className={cn(styles.paginationItem, {
               [styles.disabled]: currentPage === totalNumberOfPages,
             })}
-            onClick={() => dispatch(handlePagination(currentPage + 1))}
+            onClick={handleNextPage}
             disabled={currentPage === totalNumberOfPages}
           >
             &raquo;
