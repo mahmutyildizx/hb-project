@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HepsiBurada Frontend Challenge
 
-## Getting Started
+This project implements the e-commerce web app for HepsiBurada code challenge.
+The product list of the application was created with JSON Server.
 
-First, run the development server:
+- Application available on [Heroku](https://hb-project.herokuapp.com/)
+- Backend data [Heroku](https://products-mock-api.herokuapp.com/products)
+- Backend repository [GitHub](https://github.com/mahmutyildizx/products-api)
+
+## Features
+
+- A maximum of 12 products are displayed on the page.
+- If there are more than 12 products, you can see the other products with the pagination at the bottom.
+- You can add a product to the cart with a button. When the product is added to the cart, the button is disable.
+- When the application is opened for the first time, the data about the Cart are saved in the Local Storage layer. The products in the Cart continue to appear when the page is refreshed or closed and opened.
+- You can search for products with the search bar above.
+- You can filter the products as you wish with the SideBars on the left.
+- You can sort the products as you wish with the SideBars on the left. Sorting does not change when filter is changed.
+
+## Install dependencies
+
+First clone this repository.
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git clone https://github.com/mahmutyildizx/hb-project.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies. Make sure you already have [`nodejs`](https://nodejs.org/en/) & [`npm`](https://www.npmjs.com/) installed in your system.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**Install**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```zsh
+$ npm install  # or yarn
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Project commands
 
-## Learn More
+**Test**
 
-To learn more about Next.js, take a look at the following resources:
+```zsh
+$ npm run test # or yarn test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Run it**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```zsh
+$ npm start # or yarn start
+```
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Mahmut Yıldız**
