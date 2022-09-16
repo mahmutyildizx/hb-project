@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from "react";
-import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { handleClear } from "../../features/productsSlice";
 import Basket from "../../components/Basket";
